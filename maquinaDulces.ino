@@ -6,6 +6,7 @@ int azul = 10;
 int boton1 = 7;
 int boton2 = 6;
 int boton3 = 5;
+int boton4 = 4;
 
 int i=0;
 
@@ -26,7 +27,6 @@ void cero(){
   digitalWrite(ledE, HIGH);
   digitalWrite(ledF, HIGH);
   digitalWrite(ledG, LOW);
-    
 }
 
 void uno(){
@@ -37,7 +37,6 @@ void uno(){
   digitalWrite(ledE, LOW);
   digitalWrite(ledF, LOW);
   digitalWrite(ledG, LOW);
-    
 }
 void dos(){
   digitalWrite(ledA, HIGH);
@@ -47,7 +46,6 @@ void dos(){
   digitalWrite(ledE, HIGH);
   digitalWrite(ledF, LOW);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void tres(){
@@ -58,7 +56,6 @@ void tres(){
   digitalWrite(ledE, LOW);
   digitalWrite(ledF, LOW);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void cuatro(){
@@ -69,7 +66,6 @@ void cuatro(){
   digitalWrite(ledE, LOW);
   digitalWrite(ledF, HIGH);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void cinco(){
@@ -80,7 +76,6 @@ void cinco(){
   digitalWrite(ledE, LOW);
   digitalWrite(ledF, HIGH);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void seis(){
@@ -91,7 +86,6 @@ void seis(){
   digitalWrite(ledE, HIGH);
   digitalWrite(ledF, HIGH);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void siete(){
@@ -102,7 +96,6 @@ void siete(){
   digitalWrite(ledE, LOW);
   digitalWrite(ledF, LOW);
   digitalWrite(ledG, LOW);
-    
 }
 
 void ocho(){
@@ -113,7 +106,6 @@ void ocho(){
   digitalWrite(ledE, HIGH);
   digitalWrite(ledF, HIGH);
   digitalWrite(ledG, HIGH);
-    
 }
 
 void nueve(){
@@ -124,7 +116,6 @@ void nueve(){
   digitalWrite(ledE, 0);
   digitalWrite(ledF, 1);
   digitalWrite(ledG, 1);
-    
 }
 
 //  Chicles $2
@@ -144,6 +135,7 @@ void setup() {
   pinMode(boton1, INPUT);
   pinMode(boton2, INPUT);
   pinMode(boton3, INPUT);
+  pinMode(boton4, INPUT);
 
   int j;
   for(j=0;j<8;j++)
@@ -157,7 +149,7 @@ void loop() {
   int estadoBoton1=digitalRead(boton1);
   int estadoBoton2=digitalRead(boton2);
   int estadoBoton3=digitalRead(boton3);
-
+  int estadoBoton4=digitalRead(boton4);
     
   if(lec<=512){
       delay(500);
@@ -207,7 +199,7 @@ void loop() {
     siete();
   }else if(i==8){                 //  Refresco $8
     ocho();
-  }else if(i==9){                 
+  }else if(i>=9){                 
     nueve();
   }
 
@@ -220,10 +212,10 @@ void loop() {
   }else if(estadoBoton3 == HIGH){
     delay(1000);
     i=i-4;
+  }else if(estadoBoton4 == HIGH){
+    delay(1000);
+    i=i-8;
   }
 
-
-    
- Serial.println (i);
- 
+  Serial.println (i); 
 }
